@@ -123,23 +123,26 @@
 // console.log(users[1].getFullName()); // 'Todd Lee'
 // console.log(users[2].getFullName()); // 'Taylor Fox'
 
-const users = [
-  { firstName: 'John', lastName: 'Smith' },
-  { firstName: 'Todd', lastName: 'Lee' },
-  { firstName: 'Taylor', lastName: 'Fox' },
-];
+// const users = [
+//   { firstName: 'John', lastName: 'Smith' },
+//   { firstName: 'Todd', lastName: 'Lee' },
+//   { firstName: 'Taylor', lastName: 'Fox' },
+// ];
+//
+// const getFullName = (firstName, lastName) => () => (
+//   `${firstName} ${lastName}`
+// );
+//
+// for (let i = 0; i < users.length; i++) {
+//   var user = users[i];
+//   user.getFullName = getFullName(user.firstName, user.lastName);
+// }
+//
+// console.log(users[0].getFullName());
+// console.log(users[1].getFullName());
+// console.log(users[2].getFullName());
 
-const getFullName = (firstName, lastName) => () => (
-  `${firstName} ${lastName}`
-);
+import sayHi, { GUEST_NAME } from './module.js';
 
-for (let i = 0; i < users.length; i++) {
-  var user = users[i];
-  user.getFullName = getFullName(user.firstName, user.lastName);
-}
-
-console.log(users[0].getFullName());
-console.log(users[1].getFullName());
-console.log(users[2].getFullName());
-
-
+console.log(GUEST_NAME);
+console.log(sayHi('John'));
