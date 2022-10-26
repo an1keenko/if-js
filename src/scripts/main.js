@@ -1,56 +1,91 @@
 //1
 
-const obj1 = {
-  a: 'a',
-  b: {
-    a: 'a',
-    b: 'b',
-    c: {
-      a: 1,
-    },
-  },
-};
-const obj2 = {
-  b: {
-    c: {
-      a: 1,
-    },
-    b: 'b',
-    a: 'a',
-  },
-  a: 'a',
-};
-const obj3 = {
-  a: {
-    c: {
-      a: 'a',
-    },
-    b: 'b',
-    a: 'a',
-  },
-  b: 'b',
-};
-
-const deepEqual = (object1, object2) => {
- // return Object.is(object1, object2);
-  const prop1 = Object.getOwnPropertyNames(object1);
-  const prop2 = Object.getOwnPropertyNames(object2);
-
-  if (prop1.length !== prop2.length) {
-    return false;
+class User {
+  constructor(firstName, lastName) {
+    this.firstName = firstName;
+    this.lastName = lastName;
   }
 
-  for (let i = 0; i < prop1.length; i++) {
-    const property = prop1[i];
-    const areObjects = typeof(object1[property]) === 'object' && typeof(object2[property]) === 'object';
+  get fullName() {
+    return this.firstName + ' ' + this.lastName;
+  }
+}
 
-    if ((!areObjects && (object1[property] !== object2[property])) || (areObjects) && !deepEqual(object1[property], object2[property])) {
-      return false;
+class Student extends User {
+  constructor(firstName, lastName, admissionYear, courseName) {
+    super(firstName, lastName);
+    this.admissionYear = admissionYear;
+    this.courseName = courseName;
+  }
+
+  get course() {
+    const currentYear = new Date().getFullYear();
+    return currentYear - this.admissionYear;
+  }
+}
+
+const studentsData = [
+  {
+    firstName: 'Василий',
+    lastName: 'Петров',
+    admissionYear: 2019,
+    courseName: 'Java',
+  },
+  {
+    firstName: 'Иван',
+    lastName: 'Иванов',
+    admissionYear: 2018,
+    courseName: 'JavaScript',
+  },
+  {
+    firstName: 'Александр',
+    lastName: 'Федоров',
+    admissionYear: 2017,
+    courseName: 'Python',
+  },
+  {
+    firstName: 'Николай',
+    lastName: 'Петров',
+    admissionYear: 2019,
+    courseName: 'Android',
+  },
+];
+
+class Students {
+  constructor(students) {
+    this.students = [];
+
+    for (let i = 0; i < students.length; i++) {
+      this.students.push(
+        new Student(
+          studentsData[i].firstName,
+          studentsData[i].lastName,
+          studentsData[i].admissionYear,
+          studentsData[i].courseName,
+        ),
+      );
     }
   }
 
-  return true;
+  get getInfo() {
+    const result = [];
 
-};
+    this.students.sort((a, b) => (a.admissionYear < b.admissionYear ? 1 : -1));
 
-console.log(deepEqual(obj1, obj2));
+    for (let i = 0; i < this.students.length; i++) {
+      result.push(
+        this.students[i].fullName +
+          ' - ' +
+          this.students[i].courseName +
+          ', ' +
+          this.students[i].course,
+      );
+    }
+
+    return result;
+  }
+}
+
+const students = new Students(studentsData);
+
+console.log(students.getInfo);
