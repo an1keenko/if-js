@@ -1,44 +1,41 @@
-const text1 = document.getElementById('text1');
-const text2 = document.getElementById('text2');
-const text3 = document.getElementById('text3');
-
-const colors = {
-  data: ['magenta', 'cyan', 'firebrick', 'springgreen', 'skyblue'],
-  current: 0,
-  [Symbol.iterator]() {
-    return this;
+const data = [
+  {
+    id: '71ce9eac-e9b9-44f0-a342-9ff0b565f3b7',
+    name: 'Hotel Leopold',
+    city: 'Saint Petersburg',
+    country: 'Russia',
+    imageUrl: 'https://res.cloudinary.com/intellectfox/image/upload/v1610379365/fe/hotel-leopold_mflelk.jpg',
   },
-  next() {
-    if (this.current < this.data.length) {
-      return {
-        done: false,
-        value: this.data[this.current++],
-      };
-    }
-    if (this.current <= this.data.length) {
-      this.current = 0;
-      return {
-        done: false,
-        value: this.data[this.current],
-      };
-    }
+  {
+    id: 'aa560608-a879-48a7-80b6-deff2806b250',
+    name: 'Apartment Sunshine',
+    city: 'Santa  Cruz de Tenerife',
+    country: 'Spain',
+    imageUrl: 'https://res.cloudinary.com/intellectfox/image/upload/v1610379364/fe/apartment-sunshine_vhdlel.jpg',
   },
-};
-
-function giveColor(colors) {
-  return function(event) {
-    event.target.style.color = colors.next().value;
-    return event;
-  };
-}
-
-text1.addEventListener('click', giveColor({...colors}));
-text2.addEventListener('click', giveColor({...colors}));
-text3.addEventListener('click', giveColor({...colors}));
-
-
-
-
-
+  {
+    id: '1d88fefe-edf1-4cda-844a-babbf29bb2b3',
+    name: 'Villa Kunerad',
+    city: 'Vysokie Tatry',
+    country: 'Slowakia',
+    imageUrl: 'https://res.cloudinary.com/intellectfox/image/upload/v1610379365/fe/villa-kunerad_gdbqgv.jpg',
+  },
+  {
+    id: 'a2bf824d-edd8-41f0-8b70-244334086ab4',
+    name: 'Hostel Friendship',
+    city: 'Berlin',
+    country: 'Germany',
+    imageUrl: 'https://res.cloudinary.com/intellectfox/image/upload/v1610379364/fe/hostel-friendship_aw6tn7.jpg',
+  },
+];
 
 
+const items = document.getElementsByClassName('homes__items')[0];
+
+data.forEach((i) => {
+  items.innerHTML += `<div class='homes__item'>
+  <img class="homes__img" src=${i.imageUrl} alt="hotel-image"/>
+  <h3 class="homes__title">${i.name}</h3>
+  <h4 class="homes__subtitle"> ${i.city}, <br /> ${i.country}</h4>
+</div>`;
+});

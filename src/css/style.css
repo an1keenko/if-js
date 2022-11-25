@@ -378,8 +378,8 @@ input.form__text:focus {
 }
 
 .homes__button {
-    position: absolute;
-    transform: translate(-50%, 325%);
+    position: relative;
+    transform: translate(95em, 10em);
 }
 
 .homes__title, .destinations__title {
