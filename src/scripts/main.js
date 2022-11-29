@@ -1,44 +1,22 @@
-const text1 = document.getElementById('text1');
-const text2 = document.getElementById('text2');
-const text3 = document.getElementById('text3');
+import { data } from "./data.js";
 
-const colors = {
-  data: ['magenta', 'cyan', 'firebrick', 'springgreen', 'skyblue'],
-  current: 0,
-  [Symbol.iterator]() {
-    return this;
-  },
-  next() {
-    if (this.current < this.data.length) {
-      return {
-        done: false,
-        value: this.data[this.current++],
-      };
-    }
-    if (this.current <= this.data.length) {
-      this.current = 0;
-      return {
-        done: false,
-        value: this.data[this.current],
-      };
-    }
-  },
-};
+const items = document.getElementsByClassName('homes__items')[0];
 
-function giveColor(colors) {
-  return function(event) {
-    event.target.style.color = colors.next().value;
-    return event;
-  };
+data.forEach((i) => {
+  items.innerHTML += `<div class='homes__item'>
+  <img class="homes__img" src=${i.imageUrl} alt="hotel-image"/>
+  <h3 class="homes__title">${i.name}</h3>
+  <h4 class="homes__subtitle"> ${i.city}, <br /> ${i.country}</h4>
+</div>`;
+});
+
+for(const elem of document.querySelectorAll('*')) {
+  elem.addEventListener('click', event => {
+    console.log(`Capturing: ${event.currentTarget}`);
+  }, true);
+  elem.addEventListener('click', event => {
+    console.log(`Bubbling: ${event.currentTarget}`);
+  });
 }
-
-text1.addEventListener('click', giveColor({...colors}));
-text2.addEventListener('click', giveColor({...colors}));
-text3.addEventListener('click', giveColor({...colors}));
-
-
-
-
-
 
 
