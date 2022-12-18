@@ -221,14 +221,91 @@ a {
 
 .people-top {
     box-sizing: border-box;
-    max-width: 315px;
-    width: 100%;
+    width: 315px;
+    /*width: 100%;*/
     padding-left: 28px;
     height: var(--height-top);
     background: #fff;
     border: var(--border-form);
     border-radius: 8px;
 }
+
+.filter__popup {
+    display: flex;
+    margin-top: 12px;
+    margin-left: 55px;
+    width: 260px;
+    min-height: 160px;
+    background: #FFFFFF;
+    border-radius: 8px;
+    padding: 22px;
+    overflow: hidden;
+    color: #000;
+    transition: all .5s ease-in-out;
+    flex-direction: column;
+    row-gap: 12px;
+}
+
+.filter__text {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    color: #333333;
+    flex-wrap: nowrap;
+    margin-bottom: 20px;
+}
+
+ul {
+    padding: 0;
+}
+
+
+.filter__buttons {
+    display: flex;
+    align-items: center;
+    gap: 48px;
+}
+
+.filter__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #3077C6;
+    border: 1px solid #3077C6;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.filter__counter {
+    position: absolute;
+    transform: translateX(157px);
+}
+
+
+/*.filter__children-text {*/
+/*    margin-top: 16px;*/
+/*    font-family: 'Roboto', sans-serif;*/
+/*    font-style: normal;*/
+/*    font-weight: 400;*/
+/*    font-size: 12px;*/
+/*    line-height: 14px;*/
+/*    color: #333333;*/
+/*}*/
+
+
+.filter__select {
+    width: 100px;
+    height: 30px;
+    background: #FFFFFF;
+    border: 1px solid #3077C6;
+}
+
 
 .search-top {
     max-width: 190px;
@@ -255,13 +332,13 @@ a {
     color: #383838;
 }
 
-
 input:focus {
     outline: none;
 }
 
-input.form__text:focus {
+input.form__text:focus, input.form__text:hover {
     border: 3px solid #f5bd41;
+    transition: ease-in-out 150ms;
 }
 
 .bottom-images {
@@ -1366,3 +1443,5 @@ input.form__text:focus {
         line-height: 14px;
     }
 }
+
+

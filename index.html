@@ -49,18 +49,22 @@
           to live, work or just relax
         </p>
         <div class="form-top">
-          <form class="form-desktop" action="#">
+          <form class="form-desktop">
             <label class="label-top label-place" for="place">Your destination or hotel name</label>
             <input class="place-top form__text" value="New York" id="place" type="text" name="place" />
             <label class="label-top label-date" for="date">Check-in — Check-out</label>
             <input class="date-top form__text" value="Tue 15 Sept — Sat 19 Sept" id="date" type="text" name="date" />
-            <label for="people"></label>
-            <input class="people-top form__text" value="2 Adults — 0 Children — 1 Room" id="people" name="people" />
+            <div class="form-top__filter">
+              <label for="toggle"></label>
+              <a>
+                <input id="toggle" class="people-top form__text" value="2 Adults — 0 Children — 1 Room" name="people" />
+              </a>
+            </div>
             <button class="search-top">Search</button>
           </form>
         </div>
         <div class="form-mobile">
-          <form class="mobile" action="#">
+          <form class="mobile">
             <div class="search-mobile">
               <button class="button-search"></button>
               <input
@@ -337,6 +341,5 @@
     </footer>
   </div>
   <script type="module" src="./src/scripts/main.js"></script>
-  <script type="module" src="./src/scripts/data.js"></script>
   </body>
 </html>

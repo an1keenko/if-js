@@ -1,4 +1,4 @@
-export const data = [
+const data = [
   {
     id: '71ce9eac-e9b9-44f0-a342-9ff0b565f3b7',
     name: 'Hotel Leopold',
@@ -28,4 +28,6 @@ export const data = [
     imageUrl: 'https://res.cloudinary.com/intellectfox/image/upload/v1610379364/fe/hostel-friendship_aw6tn7.jpg',
   },
 ];
+
+export default data;
 
