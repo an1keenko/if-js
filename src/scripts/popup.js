@@ -41,23 +41,26 @@ const Popup = () => {
   const spanSelect = document.createElement('span');
 
   liAdults.append(counter.cloneNode(true), spanAdults, buttons.cloneNode(true));
+  liChildren.append(counter.cloneNode(true), spanChildren, buttons.cloneNode(true));
 
   const plusMinusChildren = liChildren
     .getElementsByClassName("filter__buttons")[0].querySelectorAll("button");
 
   console.log(liChildren);
 
-  plusMinusChildren[0].addEventListener("click", () => {
-    if (liChildren.querySelector("b").innerHTML > 0) {
-      liChildren.querySelector("b").innerHTML--;
+  plusMinusChildren[0].addEventListener("click", (e) => {
+    e.preventDefault()
+    if (liChildren.querySelector("p").innerHTML > 0) {
+      liChildren.querySelector("p").innerHTML--;
 
       popup.lastChild.remove();
     }
   });
 
-  plusMinusChildren[1].addEventListener("click", () => {
-    if (liChildren.querySelector("b").innerHTML < 10) {
-      liChildren.querySelector("b").innerHTML++;
+  plusMinusChildren[1].addEventListener("click", (e) => {
+    e.preventDefault()
+    if (liChildren.querySelector("p").innerHTML < 10) {
+      liChildren.querySelector("p").innerHTML++;
 
       const div = document.createElement("div");
       div.style.marginTop = "10px";
@@ -91,13 +94,14 @@ const Popup = () => {
     .getElementsByClassName("filter__buttons")[0]
     .querySelectorAll("button");
 
-  plusMinusRooms[0].addEventListener("click", () => {
-    if (liRooms.querySelector("b").innerHTML > 0)
-      liRooms.querySelector("b").innerHTML--;
+  plusMinusRooms[0].addEventListener("click", (e) => {
+    e.preventDefault()
+    if (liRooms.querySelector("p").innerHTML > 0)
+      liRooms.querySelector("p").innerHTML--;
   });
 
   plusMinusRooms[1].addEventListener("click", () => {
-    liRooms.querySelector("b").innerHTML++;
+    liRooms.querySelector("p").innerHTML++;
   });
 
   ul.append(liAdults, liChildren, liRooms);
