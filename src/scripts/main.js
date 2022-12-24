@@ -1,5 +1,5 @@
-import data from "./data.js";
-import Popup from "./popup.js";
+import data from './data.js';
+import Popup from './popup.js';
 
 const items = document.getElementsByClassName('homes__items')[0];
 data.forEach((i) => {
@@ -12,11 +12,11 @@ data.forEach((i) => {
 
 let isPopupOpened = false;
 
-const component = document.getElementsByClassName("form-top__filter")[0];
+const component = document.getElementsByClassName('form-top__filter')[0];
 
-const togglePopupButton = document.getElementById("toggle");
+const togglePopupButton = document.getElementById('toggle');
 
-togglePopupButton.addEventListener("click", () => {
+togglePopupButton.addEventListener('click', () => {
   if (!isPopupOpened) {
     component.append(Popup());
   } else {
