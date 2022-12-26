@@ -1,7 +1,7 @@
-import { data } from "./data.js";
+import data from './data.js';
+import Popup from './popup.js';
 
 const items = document.getElementsByClassName('homes__items')[0];
-
 data.forEach((i) => {
   items.innerHTML += `<div class='homes__item'>
   <img class="homes__img" src=${i.imageUrl} alt="hotel-image"/>
@@ -10,13 +10,17 @@ data.forEach((i) => {
 </div>`;
 });
 
-for(const elem of document.querySelectorAll('*')) {
-  elem.addEventListener('click', event => {
-    console.log(`Capturing: ${event.currentTarget}`);
-  }, true);
-  elem.addEventListener('click', event => {
-    console.log(`Bubbling: ${event.currentTarget}`);
-  });
-}
+let isPopupOpened = false;
 
+const component = document.getElementsByClassName('form-top__filter')[0];
 
+const togglePopupButton = document.getElementById('toggle');
+
+togglePopupButton.addEventListener('click', () => {
+  if (!isPopupOpened) {
+    component.append(Popup());
+  } else {
+    component.lastChild.remove();
+  }
+  isPopupOpened = !isPopupOpened;
+});
