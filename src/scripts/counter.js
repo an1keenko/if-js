@@ -99,7 +99,7 @@ document.querySelector('.counter-elem__plus__children').onclick = function () {
 
 document.querySelector('.counter-elem__minus__children').onclick = function () {
   if (splashValChildren > 0) {
-    splashInputChildren.value = --splashValChildren;
+    splashInputChildren.   value = --splashValChildren;
   }
   if (splashValChildren === 0) {
     item.innerHTML = ``;

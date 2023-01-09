@@ -459,11 +459,12 @@ input.form__text:hover {
   background-image: url('../images/icons/arrow.svg');
   background-repeat: no-repeat;
   background-position: center;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 
 .homes__button {
-  position: relative;
-  transform: translate(95em, 10em);
+  position: absolute;
+  transform: translate(20.5em, -22.5em);
 }
 
 .homes__title,
@@ -476,6 +477,12 @@ input.form__text:hover {
   color: #3077c6;
   margin-top: 20px;
 }
+
+#homes_id {
+  width: 296px;
+  height: 296px
+}
+
 
 .homes__button-tablet,
 .destinations__button-tablet {
@@ -1050,12 +1057,6 @@ input.form__text:hover {
     padding-bottom: 32px;
   }
 
-  .homes__img,
-  .destinations__img {
-    width: 156px;
-    height: 156px;
-  }
-
   .invisible-tablet {
     display: none;
   }
@@ -1085,9 +1086,19 @@ input.form__text:hover {
     padding-bottom: 40px;
   }
 
+  .destinations__img {
+    width: 156px;
+    height: 156px;
+  }
+
   .homes__item:first-child,
   .destinations__item:first-child {
     margin-left: 20px;
+  }
+
+  .homes__img {
+    width: 296px;
+    height: 296px;
   }
 
   .homes__title,
@@ -1273,6 +1284,11 @@ input.form__text:hover {
 
   .invisible-mobile {
     display: none;
+  }
+
+  #homes_id {
+    width: 156px;
+    height: 156px;
   }
 
   .homes__button-mobile,
