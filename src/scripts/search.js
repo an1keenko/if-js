@@ -1,53 +1,44 @@
-// fetch('https://if-student-api.onrender.com/api/hotels')
-//   .then((response) => {
-//     return response.json();
-//   })
-//   .then((data) => {
-//     return data.map(({name, city, country, imageUrl}) => {
-//       `${name}, ${city}, ${country}, ${imageUrl}`;
-//     }).join('');
-//   });
-// const getName = async () => {
-//   const name = await fetch(url.href);
-//   return name.json();
-// };
-
 const searchBtn = document.querySelector('.search-top');
+const searchBtnMob = document.querySelector('.button-mobile');
 const getRequest = document.querySelector('.place-top');
-const availableSection = document.querySelector('.available__items');
+const getRequestMob = document.querySelector('.input-search');
+const availableSection = document.querySelector('.background-available');
+const availableItems = document.querySelector('.available__items');
+const errorSearch = document.querySelector('.available-invisible__error');
 
 const showAvailableHotels = () => {
-  const url = new URL('https://if-student-api.onrender.com/api/hotels');
-  url.searchParams.append('search', `${getRequest.value}`);
+  availableItems.innerHTML = '';
+  availableSection.style.display = 'block';
 
-  const getItems = fetch(url.href)
-    .then((response) => response.json())
-    .then((data) => {
-     //  availableSection.innerHTML+= `
-     //  <div class="homes__item">
-     //    <img src=${data[0].imageUrl} alt="hotel-image"/>
-     //    <h3 class="homes__title">${data[0].name}</h3>
-     //    <h4 class="homes__subtitle"> ${data[0].city}, <br /> ${data[0].country}</h4>
-     //  </div>
-     //  <div class="homes__item">
-     //    <img src=${data[1].imageUrl} alt="hotel-image"/>
-     //    <h3 class="homes__title">${data[1].name}</h3>
-     //    <h4 class="homes__subtitle"> ${data[1].city}, <br /> ${data[1].country}</h4>
-     //  </div>
-     //  <div class="homes__item">
-     //    <img src=${data[2].imageUrl} alt="hotel-image"/>
-     //    <h3 class="homes__title">${data[2].name}</h3>
-     //    <h4 class="homes__subtitle"> ${data[2].city}, <br /> ${data[2].country}</h4>
-     //  </div>
-     //  <div class="homes__item">
-     //    <img src=${data[3].imageUrl} alt="hotel-image"/>
-     //    <h3 class="homes__title">${data[3].name}</h3>
-     //    <h4 class="homes__subtitle"> ${data[3].city}, <br /> ${data[3].country}</h4>
-     // </div>`;
+  const url = new URL('https://if-student-api.onrender.com/api/hotels');
+  url.searchParams.append('search', `${getRequest.value && getRequestMob.value}`);
+  fetch(url, {
+    method: "GET",
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`${response.status} - ${response.statusText}`);
+      }
+      return response.json();
     })
-    .catch((err) => {
-      console.log('Error', err);
-    });
+    .then((data) => {
+      const hotelsItems = data.map(({name, city, country, imageUrl}) => {
+          return `<div class="available__item">
+         <img id="available__img-id" src=${imageUrl} alt="hotel-image"/>
+         <h3 class="available__title">${name}</h3>
+         <h4 class="available__subtitle"> ${city},<br /> ${country}</h4>
+       </div>`;
+        })
+        .slice(0,4)
+        .join('');
+      availableItems.insertAdjacentHTML('afterbegin', hotelsItems);
+      if (data.length === 0) {
+        errorSearch.style.display = 'block';
+      } else {
+        errorSearch.style.display = 'none';
+      }
+    })
+    .catch((err) => console.error(err));
 };
 
 searchBtn.addEventListener('click', (e) => {
@@ -55,4 +46,7 @@ searchBtn.addEventListener('click', (e) => {
   showAvailableHotels();
 });
 
-
+searchBtnMob.addEventListener('click', (e) => {
+  e.preventDefault();
+  showAvailableHotels();
+});
