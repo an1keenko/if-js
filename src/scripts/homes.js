@@ -1,6 +1,8 @@
-const homesItems = fetch('https://if-student-api.onrender.com/api/hotels/popular')
-  .then(response => response.json())
-  .then(data => {
+const homesItems = fetch(
+  'https://if-student-api.onrender.com/api/hotels/popular',
+)
+  .then((response) => response.json())
+  .then((data) => {
     const items = document.getElementsByClassName('homes__items')[0];
     items.innerHTML += `<div class='homes__item'>
       <img id="homes_id" src=${data[0].imageUrl} alt="hotel-image"/>
@@ -25,8 +27,6 @@ const homesItems = fetch('https://if-student-api.onrender.com/api/hotels/popular
       <button class="homes__button"></button>
     </div>`;
   })
-  .catch(err => {
+  .catch((err) => {
     console.log('Fetch Error :-S', err);
   });
-
-export default homesItems;
