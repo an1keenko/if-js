@@ -359,6 +359,20 @@ input.form__text:hover {
   display: none;
 }
 
+.available-invisible {
+  display: none;
+}
+
+.available-invisible__error {
+  display: none;
+  text-align: center;
+  font-weight: 500;
+  font-size: 40px;
+  font-family: Roboto, serif;
+  font-style: normal;
+  line-height: 47px;
+}
+
 .offer {
   text-align: center;
   font-weight: 500;
@@ -419,11 +433,13 @@ input.form__text:hover {
   padding-top: 48px;
 }
 
-.background-homes {
+.background-homes,
+.background-available {
   background: #eaf0f9;
 }
 
 .homes__header,
+.available__header,
 .destinations__header,
 .reviews__header {
   text-align: center;
@@ -438,6 +454,7 @@ input.form__text:hover {
 }
 
 .homes__items,
+.available__items,
 .destinations__items {
   display: flex;
   flex-wrap: nowrap;
@@ -448,6 +465,7 @@ input.form__text:hover {
 }
 
 .homes__button,
+.available__button,
 .destinations__button,
 .reviews__button {
   display: inline-block;
@@ -459,14 +477,16 @@ input.form__text:hover {
   background-image: url('../images/icons/arrow.svg');
   background-repeat: no-repeat;
   background-position: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .homes__button {
-  position: relative;
-  transform: translate(95em, 10em);
+  position: absolute;
+  transform: translate(20.5em, -22.5em);
 }
 
 .homes__title,
+.available__title,
 .destinations__title {
   font-family: Roboto, serif;
   font-style: normal;
@@ -475,6 +495,11 @@ input.form__text:hover {
   line-height: 28px;
   color: #3077c6;
   margin-top: 20px;
+}
+
+#homes__img-id, #available__img-id {
+  width: 296px;
+  height: 296px;
 }
 
 .homes__button-tablet,
@@ -487,7 +512,8 @@ input.form__text:hover {
   display: none;
 }
 
-.homes__subtitle {
+.homes__subtitle,
+.available__subtitle {
   font-family: Roboto, serif;
   font-style: normal;
   font-weight: 400;
@@ -1050,12 +1076,6 @@ input.form__text:hover {
     padding-bottom: 32px;
   }
 
-  .homes__img,
-  .destinations__img {
-    width: 156px;
-    height: 156px;
-  }
-
   .invisible-tablet {
     display: none;
   }
@@ -1080,12 +1100,18 @@ input.form__text:hover {
     display: none;
   }
 
-  .homes__items,
+  .homes__items,.available__items,
   .destinations__items {
     padding-bottom: 40px;
   }
 
+  .destinations__img {
+    width: 156px;
+    height: 156px;
+  }
+
   .homes__item:first-child,
+  .available__item:first-child,
   .destinations__item:first-child {
     margin-left: 20px;
   }
@@ -1273,6 +1299,11 @@ input.form__text:hover {
 
   .invisible-mobile {
     display: none;
+  }
+
+  #homes__img-id, #available__img-id {
+    width: 156px;
+    height: 156px;
   }
 
   .homes__button-mobile,
